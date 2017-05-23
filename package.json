@@ -1,0 +1,31 @@
+{
+  "name": "healthbot-service",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node healthbot-service.js",
+    "debug": "node --inspect --debug-brk healthbot-service",
+    "test": "mocha specs --reporter spec"
+  },
+  "engines": {
+    "node": ">=6.9.2"
+  },
+  "dependencies": {
+    "cron": "1.2.1",
+    "fwsp-logger": "0.1.6",
+    "hydra-express": "1.4.9-experimental",
+    "jspath": "0.3.4",
+    "moment": "2.18.1",
+    "redis": "2.7.1",
+    "request": "2.81.0",
+    "uuid": "3.0.1"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "eslint": "3.19.0",
+    "eslint-config-google": "0.7.1",
+    "eslint-plugin-mocha": "4.9.0",
+    "mocha": "3.3.0",
+    "superagent": "3.5.2"
+  }
+}

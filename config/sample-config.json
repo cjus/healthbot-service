@@ -1,0 +1,54 @@
+{
+  "taskr": {
+    "timezone": "America/New_York",
+    "path": "../tasks",
+    "modules": {
+      "redismon": {
+        "schedule": "*/1 * * * *",
+        "rules": [
+          {
+            "id": "TOTAL_CLIENTS",
+            "condition": ".{.connectedClients > 1}",
+            "response": "Warning there are now more than 1 connected clients."
+          },
+          {
+            "id": "MEMORY_FOOTPRINT",
+            "condition": ".{.memoryFootprint > 1}",
+            "response": "Warning *Redis* memory footprint is greater than 1."
+          }
+        ]
+      },
+      "hydramon": {
+        "schedule": "*/1 * * * *" ,
+        "rules": [
+          {
+            "id": "ELAPSED_HEALTH",
+            "condition": ".{.elapsed > 0}",
+            "response": "*<%=serviceName%>* with ID <%=instanceID%> on <%=ip%>:<%=port%> is no longer responding."
+          }
+        ]
+      }
+    }
+  },
+  "slackWebHookUrl": "https://hooks.slack.com/services/T0FTXF77D/B5G9AJ5CZ/XXXXXXXXX",
+  "hydra": {
+    "serviceName": "healthbot-service",
+    "serviceIP": "localhost",
+    "servicePort": 7777,
+    "serviceType": "health",
+    "serviceDescription": "Health Services",
+    "plugins": {
+      "logger": {
+        "logRequests": true,
+        "elasticsearch": {
+          "host": "localhost",
+          "port": 9200,
+          "index": "hydra"
+        }
+      }
+    },
+    "redis": {
+      "url": "redis://localhost:6379/15"
+    }
+  }
+}

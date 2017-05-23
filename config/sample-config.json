@@ -8,13 +8,18 @@
         "rules": [
           {
             "id": "TOTAL_CLIENTS",
-            "condition": ".{.connectedClients > 1}",
+            "condition": ".{.connectedClients > 100}",
             "response": "Warning there are now more than 1 connected clients."
           },
           {
             "id": "MEMORY_FOOTPRINT",
-            "condition": ".{.memoryFootprint > 1}",
-            "response": "Warning *Redis* memory footprint is greater than 1."
+            "condition": ".{.memoryFootprint > 1048576}",
+            "response": "Warning *Redis* memory footprint is greater than 1MB."
+          },
+          {
+            "id": "TOTAL_CLIENTS",
+            "condition": ".{.totalPubSubChannels > 100}",
+            "response": "Warning there are now more than 100 Pub/Sub channels."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
   "name": "healthbot-service",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "start": "node healthbot-service.js",
@@ -13,7 +13,7 @@
   "dependencies": {
     "cron": "1.2.1",
     "fwsp-logger": "0.1.6",
-    "hydra-express": "1.4.9-experimental",
+    "hydra-express": "1.4.6",
     "jspath": "0.3.4",
     "moment": "2.18.1",
     "redis": "2.7.1",

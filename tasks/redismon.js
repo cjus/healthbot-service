@@ -1,5 +1,6 @@
 'use strict';
 
+const hydraExpress = require('hydra-express');
 const redis = require('redis');
 const taskr = require('../lib/taskr');
 const dispatcher = require('../lib/dispatcher');
@@ -71,6 +72,7 @@ class RedisMonTask {
         dispatcher.send(messages.join(' '));
       }
       redisClient.quit();
+      hydraExpress.appLogger.info(info);
     });
   }
 }

@@ -5,6 +5,7 @@
     "modules": {
       "redismon": {
         "schedule": "*/1 * * * *",
+        "notify": "@cjus",
         "rules": [
           {
             "id": "TOTAL_CLIENTS",
@@ -25,16 +26,19 @@
       },
       "hydramon": {
         "schedule": "*/1 * * * *" ,
+        "notify": "@cjus",
         "rules": [
           {
             "id": "ELAPSED_HEALTH",
             "condition": ".{.elapsed > 0}",
             "response": "*<%=serviceName%>* with ID <%=instanceID%> on <%=ip%>:<%=port%> is no longer responding."
           }
-        ]
+        ],
+        "trigger": "https://api.yourservice.com/v1/router/clear"
       }
     }
   },
+  "dontLogOk": false,
   "slackWebHookUrl": "https://hooks.slack.com/services/T0FTXF77D/B5G9AJ5CZ/XXXXXXXXX",
   "hydra": {
     "serviceName": "healthbot-service",

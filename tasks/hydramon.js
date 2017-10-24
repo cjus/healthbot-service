@@ -4,6 +4,7 @@ const hydraExpress = require('hydra-express');
 const hydra = hydraExpress.getHydra();
 const taskr = require('../lib/taskr');
 const dispatcher = require('../lib/dispatcher');
+const request = require('request');
 
 /**
 * @name HydraMonTask
@@ -29,13 +30,15 @@ class HydraMonTask {
   */
   async run() {
     try {
-      let nodes = await hydra.getServiceNodes();
-      let serviceList = nodes;
-      console.log('serviceList', serviceList);
+      let serviceList = await hydra.getServiceNodes();
       let results = taskr.executeRules('hydramon', serviceList);
       if (results.length > 0) {
+        let module = results[0].module;
         let messages = results.map((e) => `• ${e.message}\n`);
-        dispatcher.send(messages.join(' '));
+        (module.notify) ?
+          dispatcher.send(`${module.notify}: ${messages.join(' ')}`) :
+          dispatcher.send(`${messages.join(' ')}`);
+        (module.trigger) && request.get(module.trigger);
       }
     } catch (e) {
       hydraExpress.appLogger.error(e);

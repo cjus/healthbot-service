@@ -30,7 +30,7 @@ let main = async () => {
     let newConfig = hydraExpress.getRuntimeConfig();
     dispatcher.init(newConfig);
     taskr.init(newConfig);
-    dispatcher.send(`Starting ${serviceInfo.serviceName} on ${serviceInfo.serviceIP}: ${serviceInfo.servicePort}`);
+    dispatcher.send(`Starting ${serviceInfo.serviceName} on ${serviceInfo.serviceIP}:${serviceInfo.servicePort}`);
   } catch (e) {
     console.log('error', e);
   }

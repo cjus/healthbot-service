@@ -37,9 +37,9 @@ class HydraMonTask {
         let messages = results.map((e) => `• ${e.message}\n`);
         if (messages) {
           (module.notify) ?
-          dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
-          dispatcher.send(`${messages.join(' ')}`);
-          (module.trigger) && request.get(module.trigger);
+            dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
+            dispatcher.send(`${messages.join(' ')}`);
+            (module.trigger) && request.get(module.trigger);
         }
       }
     } catch (e) {

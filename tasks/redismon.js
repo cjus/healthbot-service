@@ -67,12 +67,12 @@ class RedisMonTask {
         totalPubSubChannels: map.pubsub_channels
       };
       let results = taskr.executeRules('redismon', info);
-      if (results.length > 0) {
+      if (results && results.length > 0) {
         let module = results[0].module;
         let messages = results.map((e) => `• ${e.message}\n`);
         (module.notify) ?
-        dispatcher.send(`${module.notify}: ${messages.join(' ')}`) :
-        dispatcher.send(`${messages.join(' ')}`);
+          dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
+          dispatcher.send(`${messages.join(' ')}`);
       }
       redisClient.quit();
       hydraExpress.appLogger.info(info);

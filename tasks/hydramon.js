@@ -32,11 +32,11 @@ class HydraMonTask {
     try {
       let serviceList = await hydra.getServiceNodes();
       let results = taskr.executeRules('hydramon', serviceList);
-      if (results.length > 0) {
+      if (results && results.length > 0) {
         let module = results[0].module;
         let messages = results.map((e) => `• ${e.message}\n`);
         (module.notify) ?
-          dispatcher.send(`${module.notify}: ${messages.join(' ')}`) :
+          dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
           dispatcher.send(`${messages.join(' ')}`);
         (module.trigger) && request.get(module.trigger);
       }

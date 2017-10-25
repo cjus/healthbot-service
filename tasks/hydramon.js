@@ -35,10 +35,12 @@ class HydraMonTask {
       if (results && results.length > 0) {
         let module = results[0].module;
         let messages = results.map((e) => `• ${e.message}\n`);
-        (module.notify) ?
+        if (messages) {
+          (module.notify) ?
           dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
           dispatcher.send(`${messages.join(' ')}`);
-        (module.trigger) && request.get(module.trigger);
+          (module.trigger) && request.get(module.trigger);
+        }
       }
     } catch (e) {
       hydraExpress.appLogger.error(e);

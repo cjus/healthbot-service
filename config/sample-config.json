@@ -34,6 +34,9 @@
             "response": "*<%=serviceName%>* with ID <%=instanceID%> on <%=ip%>:<%=port%> is no longer responding."
           }
         ],
+        "silenceInSlack": [
+          "stats-service"
+        ],
         "trigger": "https://api.yourservice.com/v1/router/clear"
       }
     }

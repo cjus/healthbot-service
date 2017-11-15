@@ -8,7 +8,7 @@ const request = require('request');
 
 /**
 * @name HydraMonTask
-* @summary Task to monitor hydra serivces
+* @summary Task to monitor hydra services
 * @return {undefined}
 */
 class HydraMonTask {
@@ -19,7 +19,7 @@ class HydraMonTask {
   * @return {undefined}
   */
   constructor(config) {
-    this.config = config;
+    this.config = config.taskr.modules.hydramon;
     this.run = this.run.bind(this);
   }
 

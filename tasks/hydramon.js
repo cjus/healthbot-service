@@ -34,7 +34,8 @@ class HydraMonTask {
       let results = taskr.executeRules('hydramon', serviceList);
       if (results && results.length > 0) {
         let module = results[0].module;
-        let messages = results.map((e) => {
+        let messages = [];
+        results.forEach((e) => {
           let exclude = false;
           this.config.silenceInSlack.forEach((serviceName) => {
             if (e.message.includes(serviceName)) {
@@ -42,10 +43,10 @@ class HydraMonTask {
             }
           });
           if (!exclude) {
-            return `• ${e.message}\n`;
+            message.push(`• ${e.message}\n`);
           }
         });
-        if (messages) {
+        if (messages.length > 0) {
           (module.notify) ?
             dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
             dispatcher.send(`${messages.join(' ')}`);

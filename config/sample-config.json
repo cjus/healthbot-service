@@ -45,7 +45,7 @@
   "slackWebHookUrl": "https://hooks.slack.com/services/T0FTXF77D/B5G9AJ5CZ/XXXXXXXXX",
   "hydra": {
     "serviceName": "healthbot-service",
-    "serviceIP": "localhost",
+    "serviceIP": "",
     "servicePort": 7777,
     "serviceType": "health",
     "serviceDescription": "Health Services",

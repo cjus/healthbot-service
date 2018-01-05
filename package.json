@@ -1,6 +1,6 @@
 {
   "name": "healthbot-service",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "private": true,
   "scripts": {
     "start": "node healthbot-service.js",

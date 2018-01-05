@@ -43,7 +43,7 @@ class HydraMonTask {
             }
           });
           if (!exclude) {
-            message.push(`• ${e.message}\n`);
+            messages.push(`• ${e.message}\n`);
           }
         });
         if (messages.length > 0) {

@@ -46,7 +46,6 @@ class HydraMonTask {
             messages.push(`• ${e.message}\n`);
           }
         });
-        console.log('messages', messages);
         if (messages.length > 0) {
           dispatcher.send(`${messages.join(' ')}`);
           (module.trigger) && request.get(module.trigger);

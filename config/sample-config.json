@@ -5,7 +5,6 @@
     "modules": {
       "redismon": {
         "schedule": "*/1 * * * *",
-        "notify": "@cjus",
         "rules": [
           {
             "id": "TOTAL_CLIENTS",
@@ -26,7 +25,6 @@
       },
       "hydramon": {
         "schedule": "*/1 * * * *" ,
-        "notify": "@cjus",
         "rules": [
           {
             "id": "ELAPSED_HEALTH",

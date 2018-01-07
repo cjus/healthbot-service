@@ -46,10 +46,9 @@ class HydraMonTask {
             messages.push(`• ${e.message}\n`);
           }
         });
+        console.log('messages', messages);
         if (messages.length > 0) {
-          (module.notify) ?
-            dispatcher.send(`${module.notify} ${messages.join(' ')}`) :
-            dispatcher.send(`${messages.join(' ')}`);
+          dispatcher.send(`${messages.join(' ')}`);
           (module.trigger) && request.get(module.trigger);
         }
       }
